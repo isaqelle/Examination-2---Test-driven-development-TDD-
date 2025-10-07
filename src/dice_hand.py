@@ -1,4 +1,4 @@
-import proj.dice
+import src.dice
 # This class handles the rolls of the dice.
 # It has three methods:
 #   roll_all()

@@ -1,5 +1,5 @@
 import pytest
-from proj.player import Player
+from src.player import Player
 
 class TestPlayer:
     def setup_method(self):
