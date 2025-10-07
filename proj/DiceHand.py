@@ -1,4 +1,4 @@
-from .dice import Dice
+from proj import Dice
 # This class handles the rolls of the dice.
 # It has three methods:
 #   roll_all()
