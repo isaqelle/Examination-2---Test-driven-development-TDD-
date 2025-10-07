@@ -1,11 +1,11 @@
 .PHONY: test coverage
 
 test:
-	PYTHONPATH=. pytest -v
+	pytest -v
 
 coverage:
-	PYTHONPATH=. coverage run -m pytest
-	PYTHONPATH=. coverage report -m
+	coverage run -m pytest
+	coverage report -m
 
 # RUN WITH:
 # make test

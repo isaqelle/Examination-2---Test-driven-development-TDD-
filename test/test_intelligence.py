@@ -1,6 +1,6 @@
 import pytest
 import random
-from proj.Intelligence import Intelligence
+from proj.intelligence import Intelligence
 
 
 class TestIntelligence:

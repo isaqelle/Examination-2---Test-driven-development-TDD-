@@ -1,4 +1,4 @@
-import random;
+import random
 
 # This class has one method, roll(). 
 # The class implements a dice with 6 sides.
