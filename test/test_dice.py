@@ -21,7 +21,7 @@
 
 import unittest
 
-import Dice from Dice
+from proj.dice import Dice
 
 
 class Test_Dice_Roll(unittest.TestCase):
