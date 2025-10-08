@@ -1,11 +1,13 @@
-.PHONY: test coverage
+.PHONY: test coverage install
+
+install:
+	pip install -r requirements.txt
 
 test:
 	pytest -v
 
 coverage:
-	coverage run -m pytest
-	coverage report -m
+	PYTHONPATH=. python -m coverage run -m pytest
 
 
 

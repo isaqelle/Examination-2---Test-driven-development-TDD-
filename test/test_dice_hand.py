@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock
-from src.dice_hand import DiceHand
+from src.dicehand import DiceHand
 
 # Using MagicMock or monkeypatch lets you test predictable outputs even with randomness.
 
