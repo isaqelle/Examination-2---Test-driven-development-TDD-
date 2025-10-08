@@ -8,6 +8,9 @@ import random
 
 class Intelligence:
     def __init__(self, difficulty = 'easy'):
+        difficulty = difficulty.lower()
+        if difficulty not in ['easy', 'hard']:
+            raise ValueError('Difficulty must be "easy" or "hard".')
         self.name = 'Computer Agnetha'
         self.score = 0
         self.difficulty = difficulty.lower()
@@ -26,13 +29,9 @@ class Intelligence:
         elif self.difficulty == 'hard':
             if self.score + turn_total >= 100:
                 return True # win condition
+            elif self.score < opponent_score and turn_total >= 15:
+                return True # take a moderate risk if behind
             elif turn_total >= 20:
                 return True # holds after building up a good turn total
-            elif (100 - self.score) < (100 - opponent_score) and turn_total >= 15:
-                return True #takes mild risks if behind
             else: 
                 return False
-
-        else:
-            raise ValueError('Difficulty must be "easy" or "hard".')
-        

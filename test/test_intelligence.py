@@ -1,5 +1,6 @@
 import random
 from src.intelligence import Intelligence
+import pytest
 
 
 class TestIntelligence:

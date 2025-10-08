@@ -17,4 +17,4 @@ class Player:
         self.score = 0
     #A summary of the player's current score.
     def __str__(self):
-        return f'{self.name}: {self.score} points '
+        return f"{self.name}: {self.score} points"
