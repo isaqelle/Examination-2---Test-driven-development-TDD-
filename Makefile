@@ -7,12 +7,7 @@ test:
 	pytest -v
 
 coverage:
-<<<<<<< HEAD
-	coverage run -m pytest
-	coverage report -m
-=======
 	PYTHONPATH=. python -m coverage run -m pytest
->>>>>>> c5d9e3b663cfff4021906cf087d01261233f268d
 
 flake8:
 	flake8 proj test
