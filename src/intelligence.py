@@ -3,7 +3,7 @@ Intelligence class for computer player in Pig Dice Game.
 Supports two difficulty levels, easy and hard.
 
 """
-
+import pytest 
 import random 
 
 class Intelligence:
