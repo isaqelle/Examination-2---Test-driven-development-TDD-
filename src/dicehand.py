@@ -1,5 +1,4 @@
-from src.dice import Dice
-import src.dice
+from dice import Dice
 # This class handles the rolls of the dice.
 # It has three methods:
 #   roll_all()
