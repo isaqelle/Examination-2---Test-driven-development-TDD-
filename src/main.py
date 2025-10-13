@@ -2,7 +2,7 @@ from game import Game;
 
 def main():
     game = Game()
-    game.menu()
+    game.runGame()
 
 if __name__ == "__main__":
     main()
