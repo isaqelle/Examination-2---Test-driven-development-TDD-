@@ -4,6 +4,10 @@ from intelligence import Intelligence
 from player import Player
 
 class Game:
+    player_score = 0 
+    
+    # computer_score = 0
+    # name = ""
     print("Welcom to Pig Game!")
 
     def menu(self):
@@ -15,12 +19,23 @@ class Game:
                 "1. Create new player\n"
                 "2. Play game\n"
                 "3. Show Highscore\n"
-                "4. Quit\n"
+                "4. Game Rules\n"
+                "5. Quit\n"
             )
 
+    def rules(self):
+         print("""Game rules:\nEach turn, a player repeatedly rolls a die until a 1 is rolled or the player decides to 'hold':
+If the player rolls a 1, they score nothing and it becomes the next player's turn.
+If the player rolls any other number, it is added to their turn total and the player's turn continues.
+If a player chooses to 'hold', their turn total is added to their score, and it becomes the next player's turn.
+The first player to score 100 or more points wins.\n""")
+         
+
     def runGame(self):
-        player_score = 0
+        player_score = 0 
         computer_score = 0
+        name = ""
+        highest_score = 0
 
         while True:
             self.menu()
@@ -32,59 +47,82 @@ class Game:
                 
                 
             elif userChoice == '2':
-                while True:
+                    while True:
+                        if name == "":
+                            print("You need to enter your name before playing")
+                            name = input("Enter your name: ")
+                            print(name)
+                            
+                        else:
+                             break
+
+
+                
                     difficulty = input("Select level of difficulty, Easy [E] or Hard [H]: ")
                 
                     if difficulty.lower() == "e":
-                        print("You picked an easy level!")
+                        print(f"{name} picked an easy level!")
                     elif difficulty.lower() == "h":
-                        print("You picked a hard level")
+                        print(f"{name} picked a hard level")
                     else:
                         print("Error")
-                    print('\nPress "X" to exit the game or "P" to play.')
-                    player_choice = input('>> ')
-                    if player_choice.upper() == 'X':
-                        break 
-                    elif player_choice.upper() == 'P':
-                        print('Player starts throwing dice')
-                        my_dice = Dice()
-                        player_result = my_dice.roll()
-                        player_score += player_result
-                        print(f'You rolled: {player_result}')
-                        print(f'Your current score: {player_score}')
+                    while True:
+                        print('\nPress "X" to exit the game or "P" to play or press "C" to change name.')
+                    
+                        player_choice = input('>> ')
+                        if player_choice.upper() == 'X':
+                            break 
+                        elif player_choice.upper() == 'P':
+                            print('Player starts throwing dice')
+                            my_dice = Dice()
+                            player_result = my_dice.roll()
 
-                        if player_result == 1:
-                            print('Computers turn!')
-                            computer_player = Intelligence()
-                            while True:
-                                computer_result = Dice().roll()
-                                computer_score += computer_result
-                                print(f'The computer rolled: {computer_result}')
-                                print(f'Computers current score: {computer_score}')
+                            if player_result > highest_score:
+                                highest_score += player_result
+                            else:
+                                player_score += player_result
+                             
+                            print(f'{name} rolled: {player_result}')
+                            print(f"{name}'s current score: {player_score}")
 
-                                decision = computer_player.should_hold(computer_score, player_score)
+                            if player_result == 1:
+                                print('Computers turn!')
+                                computer_player = Intelligence()
+                                while True:
+                                    computer_result = Dice().roll()
+                                    computer_score += computer_result
+                                    print(f'The computer rolled: {computer_result}')
+                                    print(f'Computers current score: {computer_score}\n')
 
-                                if decision:
-                                    print("Computer decides to hold this turn.")
-                                    break
-                                else:
-                                    print("Computer decides to roll again.")
-                                # computer_player += computer_result 
+                                    decision = computer_player.should_hold(computer_score, player_score)
+
+                                    if decision:
+                                        print("Computer decides to hold this turn.\n")
+                                        break
+                                    else:
+                                        print("Computer decides to roll again.")
+                                    # computer_player += computer_result 
+                        elif player_choice.upper() == "C":
+                            name = input("Enter new name: ")
+                            print(f"New name set to: {name}\n")
                                 
-                            
-
-                    if player_score >= 100 or computer_score >=100 :
-                        break
-
-                if player_score >= 100:
-                    print("You win")
-                elif computer_score >= 100:
-                    print("Computer wins")
+                        # CHANGE LATER TO 100
+                        if player_score >= 10 or computer_score >=10 :
+                            break
+            # CHANGE LATER TO 100
+            if player_score >= 10:
+                new_highscore = player_score
+                print(f"{name} wins!\nScore: {new_highscore}")
+            elif computer_score >= 10:
+                print("Computer Agnetha wins")
 
             elif userChoice == '3':
                 print("High score: ")
+                print(f"Your highscore: {new_highscore}")
 
             elif userChoice == '4':
+                self.rules()    
+            elif userChoice == '5':
                 print(f"Thank you for playing {name}!")
                 break
 
