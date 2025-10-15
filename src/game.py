@@ -88,11 +88,10 @@ First to reach 100 wins.\n"""
             if not self.game_over:
                 self.computer_turn()
 
-        print("\n--- Game Over ---")
         if self.player.score > self.computer.score:
             print(f"🎉 {self.player.name} wins the match!")
         elif self.computer.score > self.player.score:
-            print("💻 Computer wins the match!")
+            print(f"💻 {self.computer.name} wins the match!")
         else:
             print("It's a tie!")
 
