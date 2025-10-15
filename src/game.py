@@ -36,6 +36,7 @@ The first player to score 100 or more points wins.\n""")
         computer_score = 0
         name = ""
         highest_score = 0
+        player = None
 
         while True:
             self.menu()
@@ -43,6 +44,7 @@ The first player to score 100 or more points wins.\n""")
 
             if userChoice == '1':
                 name = input("Enter your name: ")
+                player = Player(name)
                 print(f"Hello {name}")
                 
                 
@@ -74,34 +76,49 @@ The first player to score 100 or more points wins.\n""")
                             break 
                         elif player_choice.upper() == 'P':
                             print('Player starts throwing dice')
-                            my_dice = Dice()
-                            player_result = my_dice.roll()
+                            turn_over = False
+                            while not turn_over:
+                                player_result = Dice().roll()
+                                print(f"{name} rolled: {player_result}")
+
+                                if player_result == 1:
+                                    print("ROlled 1! Turn over.")
+                                    turn_over = True
+                                else:
+                                   playResult = player.add_points(player_result)
+                                   player_score = player.score
+                                   print(f"{name}'s current score: {playResult}")
+
+                                   hold = input("Press H to hold, any other to keep playing")
+                                   if hold.strip().lower() == "h":
+                                       turn_over = True
 
                             if player_result > highest_score:
                                 highest_score += player_result
-                            else:
-                                player_score += player_result
+                            
+                                # player_score += player_result
+                                # playerscores = Player(name)
+                                # playResult = playerscores.add_points(player_score)
+                                # player_score += playResult
                              
                             print(f'{name} rolled: {player_result}')
                             print(f"{name}'s current score: {player_score}")
 
-                            if player_result == 1:
-                                print('Computers turn!')
-                                computer_player = Intelligence()
-                                while True:
-                                    computer_result = Dice().roll()
-                                    computer_score += computer_result
-                                    print(f'The computer rolled: {computer_result}')
-                                    print(f'Computers current score: {computer_score}\n')
+                            print("\nComputer's turn!")
+                            computer_player = Intelligence()
+                            while True:
+                                computer_result = Dice().roll()
+                                computer_score += computer_result
+                                print(f"The computer rolled: {computer_result}")
+                                print(f"Comupter curret score: {computer_score}\n")
 
-                                    decision = computer_player.should_hold(computer_score, player_score)
+                                decision = computer_player.should_hold(computer_score, player_score)
+                                if decision:
+                                    print("Computer decides to hold this turn\n")
+                                    break
+                                else:
+                                    print("Computer decides to roll again.")
 
-                                    if decision:
-                                        print("Computer decides to hold this turn.\n")
-                                        break
-                                    else:
-                                        print("Computer decides to roll again.")
-                                    # computer_player += computer_result 
                         elif player_choice.upper() == "C":
                             name = input("Enter new name: ")
                             print(f"New name set to: {name}\n")
