@@ -36,30 +36,54 @@ The first player to score 100 or more points wins.\n"""
     def play_turn(self):
         """Handle player's turn."""
         print("\nYour turn!")
-        turn_over = False
+        turn_total = 0
 
-        while not turn_over:
+        while True:
             roll = Dice().roll()
             print(f"You rolled: {roll}")
 
             if roll == 1:
                 print("Rolled a 1! Turn over, you lose your turn points.")
-                turn_over = True
+                turn_total = 0
+                break
             else:
-                self.player.add_points(roll)
+                turn_total += roll
+                print(f"Turn total: {turn_total}")
+                print(f"{self.player.name}'s overall score: {self.player.score}")
+
+            # Always show options to player after each roll
+            print('\nPress:')
+            print('  "H" to hold and keep your points')
+            print('  "R" to roll again')
+            print('  "C" to change your name')
+            print('  "X" to exit game\n')
+
+            choice = input(">> ").strip().lower()
+
+            if choice == "x":
+                print("Exiting game...")
+                self.game_over = True
+                return  # exit entire game
+            elif choice == "c":
+                new_name = input("Enter new name: ").strip()
+                self.player.name = new_name
+                print(f"Name changed to {new_name}")
+                continue
+            elif choice == "h":
+                self.player.add_points(turn_total)
                 self.player_score = self.player.score
-                print(f"{self.player.name}'s current score: {self.player_score}")
+                print(f"You hold with {turn_total} points.")
+                print(f"Total score: {self.player_score}\n")
 
                 if self.player_score >= 10:
                     print(f"\n🎉 {self.player.name} wins with {self.player_score} points! 🎉")
                     self.highest_score = max(self.highest_score, self.player_score)
                     self.game_over = True
-                    return
-
-                hold = input("Press 'H' to hold, any other key to roll again: ").strip().lower()
-                if hold == "h":
-                    print(f"You hold with {self.player_score} points.\n")
-                    turn_over = True
+                break
+            elif choice == "r":
+                continue
+            else:
+                print("Invalid input, rolling again...")
 
     def computer_turn(self):
         """Handle computer's turn."""
