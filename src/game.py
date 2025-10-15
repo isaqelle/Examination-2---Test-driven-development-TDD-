@@ -46,7 +46,8 @@ First to reach 100 wins.\n"""
             choice = input("Enter choice: ").strip()
 
             if choice == "1":
-                name = input("Enter your name: ").strip()
+                print("Enter your name: ")
+                name = input(">> ").strip()
                 self.player = Player(name)
                 print(f"Hello, {name}!")
 
@@ -78,11 +79,8 @@ First to reach 100 wins.\n"""
         self.computer.reset_score()
         self.game_over = False
 
-        
-        
-
-
-        difficulty = input("Select difficulty (Easy [E] / Hard [H]): ").strip().lower()
+        print("Select difficulty (Easy [E] / Hard [H]): ")
+        difficulty = input(">> ").strip().lower()
         print(f"{'Hard' if difficulty == 'h' else 'Easy'} mode selected.\nLet's begin!")
 
         while not self.game_over:
@@ -104,7 +102,7 @@ First to reach 100 wins.\n"""
 
         while True:
             print(
-                f"\Player score: {self.player.score}\n"
+                f"{self.player.name}'s score: {self.player.score} | {self.computer.name}'s score: {self.computer.score}\n"
                 "[R] Roll  |  [H] Hold  |  [C] Change name  |  [X] Exit match\n"
             )
             choice = input(">> ").strip().lower()
@@ -115,7 +113,8 @@ First to reach 100 wins.\n"""
                 return
 
             elif choice == "c":
-                new_name = input("Enter new name: ").strip()
+                print("Enter new name: ")
+                new_name = input(">> ").strip().lower()
                 self.player.name = new_name
                 print(f"Name changed to {new_name}")
                 continue
@@ -137,7 +136,7 @@ First to reach 100 wins.\n"""
                     return  # end turn and end game immediately
 
                 else:
-                    print(f"Total score: {self.player.score}")
+                    print(f"Total score: {self.player.score}\n")
 
             elif choice == "h":
                 print(f"Held! Total score: {self.player.score}")
