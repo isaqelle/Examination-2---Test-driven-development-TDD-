@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>src.game API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.game</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.game.Game"><code class="flex name class">
+<span>class <span class="ident">Game</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Game:
+    &#34;&#34;&#34;A class to represent a Pig Dice Game session.&#34;&#34;&#34;
+
+    WINNING_SCORE = 10  # set to 10 for testing purposes
+
+    def __init__(self):
+        &#34;&#34;&#34;
+        Initialize a new game session, including player, computer,
+        dice, AI, and highscore tracking. Also prints the game title banner.
+        &#34;&#34;&#34;
+        self.player = None
+        self.computer = Player(&#34;Computer&#34;)
+        self.dice = Dice()
+        self.intelligence = Intelligence()
+        self.highest_score = 0
+        self.game_over = False
+        self.highscores = HighScore()
+        self.width = 53
+
+        print(&#34;\n╔&#34; + &#34;═&#34; * width + &#34;╗&#34;)
+        print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+        print(&#34;║&#34; + title.center(width - 2) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+        print(&#34;╚&#34; + &#34;═&#34; * width + &#34;╝&#34;)
+
+
+    # ---------- MENUS ----------
+    def menu(self):
+        &#34;&#34;&#34;
+        Display the main game menu with options for creating a player,
+        starting the game, viewing high scores, reading game rules, or quitting.
+        &#34;&#34;&#34;
+
+        print(&#34;\n╔&#34; + &#34;═&#34; * width + &#34;╗&#34;)
+        print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;1) Create new Player&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;2) Play Game&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;3) Show Highscore&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;4) Game Rules&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;5) Quit&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+        print(&#34;╚&#34; + &#34;═&#34; * width + &#34;╝&#34;)
+
+    def rules(self):
+        &#34;&#34;&#34;
+        Display the game rules in a formatted ASCII frame.
+        Explains how turns work, scoring, and how to win.
+        &#34;&#34;&#34;
+
+        print(&#34;╔&#34; + &#34;═&#34; * width + &#34;╗&#34;)
+        print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;🎲 GAME RULES&#34;.center(width-1) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;Each turn, a player repeatedly rolls a die until&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;a 1 is rolled or the player decides to &#39;hold&#39;:&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;- Rolling a 1 = lose turn points&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;- Rolling 2–6 = add to turn total&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;- &#39;Hold&#39; = add turn total to score&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;First to reach 100 wins.&#34;.center(width) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+        print(&#34;╚&#34; + &#34;═&#34; * width + &#34;╝&#34;)
+
+
+    # ---------- GAME LOOP ----------
+    def run(self):
+        &#34;&#34;&#34;
+        Run the main game loop, displaying menus and handling user choices.
+        Supports creating a player, starting a game, showing highscores,
+        viewing rules, and quitting the application.
+        &#34;&#34;&#34;
+        while True:
+            self.menu()
+            print(&#34;Enter choice:&#34;)
+            choice = input(&#34;&gt;&gt; &#34;).strip()
+
+            if choice == &#34;1&#34;:
+                while True:
+                    print(&#34;Enter your name: &#34;)
+                    name = input(&#34;&gt;&gt; &#34;).strip()
+                    if name == &#34;&#34;:
+                        print(&#34;Name cannot be null.&#34;)
+                        continue
+                    self.player = Player(name)
+                    print(f&#34;Player created, welcome {name}!&#34;)
+                    break
+
+            elif choice == &#34;2&#34;:
+                if not self.player:
+                    print(&#34;Please create a player first!&#34;)
+                    continue
+                self.start_game()
+
+            elif choice == &#34;3&#34;:
+                self.highscores.display_all()
+
+            elif choice == &#34;4&#34;:
+                self.rules()
+
+            elif choice == &#34;5&#34;:
+                print(f&#34;Goodbye {self.player.name if self.player else &#39;Player&#39;}!&#34;)
+                break
+
+            else:
+                print(&#34;Invalid choice, try again.&#34;)
+
+    # ---------- GAME START ----------
+    def start_game(self):
+        &#34;&#34;&#34;
+        Handle the human player&#39;s turn.
+
+        Displays the current scores, provides choices to Roll, Hold, Change name,
+        or Exit match. Updates scores and checks for winning conditions.
+        &#34;&#34;&#34;
+        if not self.player:
+            print(&#34;You need to create a player first!&#34;)
+            return
+        self.player.reset_score()
+        self.computer.reset_score()
+        self.game_over = False
+
+        while True:
+            print(&#34;Select difficulty (Easy [E] / Hard [H]): &#34;)
+            difficulty = input(&#34;&gt;&gt; &#34;).strip().lower()
+            if difficulty not in (&#34;e&#34;,&#34;h&#34;):
+                print(&#34;Please select [E] or [H]&#34;)
+                continue
+            break
+
+        print(f&#34;{&#39;Hard&#39; if difficulty == &#39;h&#39; else &#39;Easy&#39;} mode selected.\nLet&#39;s begin!&#34;)
+
+        while not self.game_over:
+            self.play_turn()
+            if not self.game_over:
+                self.computer_turn()
+
+        if self.player.score &gt; self.computer.score:
+            print(f&#34;🎉 {self.player.name} wins the match!&#34;)
+        elif self.computer.score &gt; self.player.score:
+            print(f&#34;💻 {self.computer.name} wins the match!&#34;)
+        else:
+            print(&#34;It&#39;s a tie!&#34;)
+
+    # ---------- PLAYER TURN ----------
+    def play_turn(self):
+        &#34;&#34;&#34;
+        Handle the computer&#39;s turn using AI logic.
+
+        Rolls the dice and decides whether to hold or continue rolling based on
+        the projected score and intelligence rules. Updates scores and checks
+        for winning conditions.
+        &#34;&#34;&#34;
+
+        print(f&#34;\n{self.player.name}&#39;s turn!&#34;)
+
+        while True:
+            print(&#34;\n╔&#34; + &#34;═&#34; * (width+14) + &#34;╗&#34;)
+            print(&#34;║&#34; + f&#34;{self.player.name}&#39;s score: {self.player.score} | {self.computer.name}&#39;s score: {self.computer.score}&#34;.center(width+14) + &#34;║&#34;)
+            print(&#34;╚&#34; + &#34;═&#34; * (width+14) + &#34;╝&#34;)
+            print(&#34;\n╔&#34; + &#34;═&#34; * (width+14) + &#34;╗&#34;)
+            print(&#34;║&#34; + &#34; &#34; * (width+14) + &#34;║&#34;)
+            print(&#34;║&#34; + &#34;[R] Roll  |  [H] Hold  |  [C] Change name  |  [X] Exit match&#34;.center(width+14) + &#34;║&#34;)
+            print(&#34;║&#34; + &#34; &#34; * (width+14) + &#34;║&#34;)
+            print(&#34;╚&#34; + &#34;═&#34; * (width+14) + &#34;╝&#34;)
+            print(&#34;&#34;)
+            choice = input(&#34;&gt;&gt; &#34;).strip().lower()
+
+            if choice == &#34;x&#34;:
+                self.game_over = True
+                print(&#34;Exiting current game...&#34;)
+                return
+
+            elif choice == &#34;c&#34;:
+                print(&#34;Enter new name: &#34;)
+                new_name = input(&#34;&gt;&gt; &#34;).strip().lower()
+                self.player.name = new_name
+                print(f&#34;Name changed to {new_name}&#34;)
+                continue
+
+            elif choice == &#34;r&#34;:
+                roll = self.dice.roll()
+                
+                print(f&#34;{self.player.name} rolled: {roll}&#34;)
+
+                if roll == 1:
+                    print(&#34;Rolled a 1! You lose your turn points.&#34;)
+                    return  # lose turn, pass to computer
+                self.player.score += roll
+
+                if self.player.score &gt;= self.WINNING_SCORE:
+                    print(f&#34;🎉 {self.player.name} wins with {self.player.score} points! 🎉&#34;)
+                    self.highscores.add_score(self.player.name, self.player.score)
+                    self.game_over = True
+                    return  # end turn and end game immediately
+
+                else:
+                    print(f&#34;Total score: {self.player.score}\n&#34;)
+
+            elif choice == &#34;h&#34;:
+                print(f&#34;Held! Total score: {self.player.score}&#34;)
+                if self.player.score &gt;= self.WINNING_SCORE:
+                    print(f&#34;🎉 {self.player.name} wins with {self.player.score} points!&#34;)
+                    self.highscores.add_score(self.player.name, self.player.score)
+                    self.game_over = True
+                return  # end of turn
+            else:
+                print(&#34;Invalid choice.&#34;)
+
+    # ---------- COMPUTER TURN ----------
+    def computer_turn(self):
+        &#34;&#34;&#34;
+    Execute the computer player&#39;s turn.
+
+    Rolls dice until the computer decides to hold or rolls a 1.
+    Updates scores and checks for a winning condition.
+    &#34;&#34;&#34;
+        if self.game_over:
+            return
+
+        print(&#34;\n💻 Computer&#39;s turn!&#34;)
+        turn_total = 0
+
+        while True:
+            roll = self.dice.roll()
+            print(f&#34;Computer rolled: {roll}&#34;)
+
+            if roll == 1:
+                print(&#34;Computer rolled a 1 — loses turn points.&#34;)
+                return  # end turn
+
+            turn_total += roll
+            projected_score = self.computer.score + turn_total
+
+            if projected_score &gt;= self.WINNING_SCORE:
+                self.computer.score = projected_score
+                print(f&#34;💻 Computer wins with {self.computer.score} points!&#34;)
+                self.highscores.add_score(&#34;Computer&#34;, self.computer.score)
+                self.game_over = True
+                return
+
+            if self.intelligence.should_hold(projected_score, self.player.score):
+                self.computer.score = projected_score
+                print(f&#34;Computer holds at {self.computer.score} points.&#34;)
+                return
+
+            print(&#34;Computer rolls again...&#34;)</code></pre>
+</details>
+<div class="desc"><p>A class to represent a Pig Dice Game session.</p>
+<p>Initialize a new game session, including player, computer,
+dice, AI, and highscore tracking. Also prints the game title banner.</p></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.game.Game.WINNING_SCORE"><code class="name">var <span class="ident">WINNING_SCORE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="src.game.Game.computer_turn"><code class="name flex">
+<span>def <span class="ident">computer_turn</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def computer_turn(self):
+    &#34;&#34;&#34;
+Execute the computer player&#39;s turn.
+
+Rolls dice until the computer decides to hold or rolls a 1.
+Updates scores and checks for a winning condition.
+&#34;&#34;&#34;
+    if self.game_over:
+        return
+
+    print(&#34;\n💻 Computer&#39;s turn!&#34;)
+    turn_total = 0
+
+    while True:
+        roll = self.dice.roll()
+        print(f&#34;Computer rolled: {roll}&#34;)
+
+        if roll == 1:
+            print(&#34;Computer rolled a 1 — loses turn points.&#34;)
+            return  # end turn
+
+        turn_total += roll
+        projected_score = self.computer.score + turn_total
+
+        if projected_score &gt;= self.WINNING_SCORE:
+            self.computer.score = projected_score
+            print(f&#34;💻 Computer wins with {self.computer.score} points!&#34;)
+            self.highscores.add_score(&#34;Computer&#34;, self.computer.score)
+            self.game_over = True
+            return
+
+        if self.intelligence.should_hold(projected_score, self.player.score):
+            self.computer.score = projected_score
+            print(f&#34;Computer holds at {self.computer.score} points.&#34;)
+            return
+
+        print(&#34;Computer rolls again...&#34;)</code></pre>
+</details>
+<div class="desc"><p>Execute the computer player's turn.</p>
+<p>Rolls dice until the computer decides to hold or rolls a 1.
+Updates scores and checks for a winning condition.</p></div>
+</dd>
+<dt id="src.game.Game.menu"><code class="name flex">
+<span>def <span class="ident">menu</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def menu(self):
+    &#34;&#34;&#34;
+    Display the main game menu with options for creating a player,
+    starting the game, viewing high scores, reading game rules, or quitting.
+    &#34;&#34;&#34;
+
+    print(&#34;\n╔&#34; + &#34;═&#34; * width + &#34;╗&#34;)
+    print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;1) Create new Player&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;2) Play Game&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;3) Show Highscore&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;4) Game Rules&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;5) Quit&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+    print(&#34;╚&#34; + &#34;═&#34; * width + &#34;╝&#34;)</code></pre>
+</details>
+<div class="desc"><p>Display the main game menu with options for creating a player,
+starting the game, viewing high scores, reading game rules, or quitting.</p></div>
+</dd>
+<dt id="src.game.Game.play_turn"><code class="name flex">
+<span>def <span class="ident">play_turn</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def play_turn(self):
+    &#34;&#34;&#34;
+    Handle the computer&#39;s turn using AI logic.
+
+    Rolls the dice and decides whether to hold or continue rolling based on
+    the projected score and intelligence rules. Updates scores and checks
+    for winning conditions.
+    &#34;&#34;&#34;
+
+    print(f&#34;\n{self.player.name}&#39;s turn!&#34;)
+
+    while True:
+        print(&#34;\n╔&#34; + &#34;═&#34; * (width+14) + &#34;╗&#34;)
+        print(&#34;║&#34; + f&#34;{self.player.name}&#39;s score: {self.player.score} | {self.computer.name}&#39;s score: {self.computer.score}&#34;.center(width+14) + &#34;║&#34;)
+        print(&#34;╚&#34; + &#34;═&#34; * (width+14) + &#34;╝&#34;)
+        print(&#34;\n╔&#34; + &#34;═&#34; * (width+14) + &#34;╗&#34;)
+        print(&#34;║&#34; + &#34; &#34; * (width+14) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34;[R] Roll  |  [H] Hold  |  [C] Change name  |  [X] Exit match&#34;.center(width+14) + &#34;║&#34;)
+        print(&#34;║&#34; + &#34; &#34; * (width+14) + &#34;║&#34;)
+        print(&#34;╚&#34; + &#34;═&#34; * (width+14) + &#34;╝&#34;)
+        print(&#34;&#34;)
+        choice = input(&#34;&gt;&gt; &#34;).strip().lower()
+
+        if choice == &#34;x&#34;:
+            self.game_over = True
+            print(&#34;Exiting current game...&#34;)
+            return
+
+        elif choice == &#34;c&#34;:
+            print(&#34;Enter new name: &#34;)
+            new_name = input(&#34;&gt;&gt; &#34;).strip().lower()
+            self.player.name = new_name
+            print(f&#34;Name changed to {new_name}&#34;)
+            continue
+
+        elif choice == &#34;r&#34;:
+            roll = self.dice.roll()
+            
+            print(f&#34;{self.player.name} rolled: {roll}&#34;)
+
+            if roll == 1:
+                print(&#34;Rolled a 1! You lose your turn points.&#34;)
+                return  # lose turn, pass to computer
+            self.player.score += roll
+
+            if self.player.score &gt;= self.WINNING_SCORE:
+                print(f&#34;🎉 {self.player.name} wins with {self.player.score} points! 🎉&#34;)
+                self.highscores.add_score(self.player.name, self.player.score)
+                self.game_over = True
+                return  # end turn and end game immediately
+
+            else:
+                print(f&#34;Total score: {self.player.score}\n&#34;)
+
+        elif choice == &#34;h&#34;:
+            print(f&#34;Held! Total score: {self.player.score}&#34;)
+            if self.player.score &gt;= self.WINNING_SCORE:
+                print(f&#34;🎉 {self.player.name} wins with {self.player.score} points!&#34;)
+                self.highscores.add_score(self.player.name, self.player.score)
+                self.game_over = True
+            return  # end of turn
+        else:
+            print(&#34;Invalid choice.&#34;)</code></pre>
+</details>
+<div class="desc"><p>Handle the computer's turn using AI logic.</p>
+<p>Rolls the dice and decides whether to hold or continue rolling based on
+the projected score and intelligence rules. Updates scores and checks
+for winning conditions.</p></div>
+</dd>
+<dt id="src.game.Game.rules"><code class="name flex">
+<span>def <span class="ident">rules</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rules(self):
+    &#34;&#34;&#34;
+    Display the game rules in a formatted ASCII frame.
+    Explains how turns work, scoring, and how to win.
+    &#34;&#34;&#34;
+
+    print(&#34;╔&#34; + &#34;═&#34; * width + &#34;╗&#34;)
+    print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;🎲 GAME RULES&#34;.center(width-1) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;Each turn, a player repeatedly rolls a die until&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;a 1 is rolled or the player decides to &#39;hold&#39;:&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;- Rolling a 1 = lose turn points&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;- Rolling 2–6 = add to turn total&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;- &#39;Hold&#39; = add turn total to score&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34;First to reach 100 wins.&#34;.center(width) + &#34;║&#34;)
+    print(&#34;║&#34; + &#34; &#34; * width + &#34;║&#34;)
+    print(&#34;╚&#34; + &#34;═&#34; * width + &#34;╝&#34;)</code></pre>
+</details>
+<div class="desc"><p>Display the game rules in a formatted ASCII frame.
+Explains how turns work, scoring, and how to win.</p></div>
+</dd>
+<dt id="src.game.Game.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self):
+    &#34;&#34;&#34;
+    Run the main game loop, displaying menus and handling user choices.
+    Supports creating a player, starting a game, showing highscores,
+    viewing rules, and quitting the application.
+    &#34;&#34;&#34;
+    while True:
+        self.menu()
+        print(&#34;Enter choice:&#34;)
+        choice = input(&#34;&gt;&gt; &#34;).strip()
+
+        if choice == &#34;1&#34;:
+            while True:
+                print(&#34;Enter your name: &#34;)
+                name = input(&#34;&gt;&gt; &#34;).strip()
+                if name == &#34;&#34;:
+                    print(&#34;Name cannot be null.&#34;)
+                    continue
+                self.player = Player(name)
+                print(f&#34;Player created, welcome {name}!&#34;)
+                break
+
+        elif choice == &#34;2&#34;:
+            if not self.player:
+                print(&#34;Please create a player first!&#34;)
+                continue
+            self.start_game()
+
+        elif choice == &#34;3&#34;:
+            self.highscores.display_all()
+
+        elif choice == &#34;4&#34;:
+            self.rules()
+
+        elif choice == &#34;5&#34;:
+            print(f&#34;Goodbye {self.player.name if self.player else &#39;Player&#39;}!&#34;)
+            break
+
+        else:
+            print(&#34;Invalid choice, try again.&#34;)</code></pre>
+</details>
+<div class="desc"><p>Run the main game loop, displaying menus and handling user choices.
+Supports creating a player, starting a game, showing highscores,
+viewing rules, and quitting the application.</p></div>
+</dd>
+<dt id="src.game.Game.start_game"><code class="name flex">
+<span>def <span class="ident">start_game</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_game(self):
+    &#34;&#34;&#34;
+    Handle the human player&#39;s turn.
+
+    Displays the current scores, provides choices to Roll, Hold, Change name,
+    or Exit match. Updates scores and checks for winning conditions.
+    &#34;&#34;&#34;
+    if not self.player:
+        print(&#34;You need to create a player first!&#34;)
+        return
+    self.player.reset_score()
+    self.computer.reset_score()
+    self.game_over = False
+
+    while True:
+        print(&#34;Select difficulty (Easy [E] / Hard [H]): &#34;)
+        difficulty = input(&#34;&gt;&gt; &#34;).strip().lower()
+        if difficulty not in (&#34;e&#34;,&#34;h&#34;):
+            print(&#34;Please select [E] or [H]&#34;)
+            continue
+        break
+
+    print(f&#34;{&#39;Hard&#39; if difficulty == &#39;h&#39; else &#39;Easy&#39;} mode selected.\nLet&#39;s begin!&#34;)
+
+    while not self.game_over:
+        self.play_turn()
+        if not self.game_over:
+            self.computer_turn()
+
+    if self.player.score &gt; self.computer.score:
+        print(f&#34;🎉 {self.player.name} wins the match!&#34;)
+    elif self.computer.score &gt; self.player.score:
+        print(f&#34;💻 {self.computer.name} wins the match!&#34;)
+    else:
+        print(&#34;It&#39;s a tie!&#34;)</code></pre>
+</details>
+<div class="desc"><p>Handle the human player's turn.</p>
+<p>Displays the current scores, provides choices to Roll, Hold, Change name,
+or Exit match. Updates scores and checks for winning conditions.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.game.Game" href="#src.game.Game">Game</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.game.Game.WINNING_SCORE" href="#src.game.Game.WINNING_SCORE">WINNING_SCORE</a></code></li>
+<li><code><a title="src.game.Game.computer_turn" href="#src.game.Game.computer_turn">computer_turn</a></code></li>
+<li><code><a title="src.game.Game.menu" href="#src.game.Game.menu">menu</a></code></li>
+<li><code><a title="src.game.Game.play_turn" href="#src.game.Game.play_turn">play_turn</a></code></li>
+<li><code><a title="src.game.Game.rules" href="#src.game.Game.rules">rules</a></code></li>
+<li><code><a title="src.game.Game.run" href="#src.game.Game.run">run</a></code></li>
+<li><code><a title="src.game.Game.start_game" href="#src.game.Game.start_game">start_game</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,7 +1,7 @@
-from dice import Dice
-from intelligence import Intelligence
-from player import Player
-from highscore import HighScore
+from .dice import Dice
+from .intelligence import Intelligence
+from .player import Player
+from .highscore import HighScore
 
 title = "🐖  P I G   G A M E  🐖"
 width = 53
