@@ -82,4 +82,6 @@ python -m src.main
 
 ## Testing
 Start the Unittests:
+```bash
 make coverage 
+```
