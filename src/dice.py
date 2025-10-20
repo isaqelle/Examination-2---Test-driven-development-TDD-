@@ -9,7 +9,7 @@ class Dice:
         self.value = 1  # default starting value
 
     def roll(self):
-        """Roll the die randomly and update its value. """
+        """Roll the die randomly and update its value."""
         self.value = random.randint(1, self.num_sides)
         return self.value
 

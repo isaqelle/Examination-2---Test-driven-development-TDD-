@@ -12,10 +12,7 @@ class Game:
     WINNING_SCORE = 10  # set to 10 for testing purposes
 
     def __init__(self):
-        """
-        Initialize a new game session, including player, computer,
-        dice, AI, and highscore tracking. Also prints the game title banner.
-        """
+        """Initialize a new game session, including player, computer,dice, AI, and highscore tracking. Also prints the game title banner."""
         self.player = None
         self.computer = Player("Computer")
         self.dice = Dice()
@@ -31,13 +28,9 @@ class Game:
         print("║" + " " * width + "║")
         print("╚" + "═" * width + "╝")
 
-
     # ---------- MENUS ----------
     def menu(self):
-        """
-        Display the main game menu with options for creating a player,
-        starting the game, viewing high scores, reading game rules, or quitting.
-        """
+        """Display the main game menu with options for creating a player,starting the game, viewing high scores, reading game rules, or quitting."""
 
         print("\n╔" + "═" * width + "╗")
         print("║" + " " * width + "║")
@@ -50,10 +43,7 @@ class Game:
         print("╚" + "═" * width + "╝")
 
     def rules(self):
-        """
-        Display the game rules in a formatted ASCII frame.
-        Explains how turns work, scoring, and how to win.
-        """
+        """Display the game rules in a formatted ASCII frame.Explains how turns work, scoring, and how to win."""
 
         print("╔" + "═" * width + "╗")
         print("║" + " " * width + "║")
@@ -67,14 +57,9 @@ class Game:
         print("║" + " " * width + "║")
         print("╚" + "═" * width + "╝")
 
-
     # ---------- GAME LOOP ----------
     def run(self):
-        """
-        Run the main game loop, displaying menus and handling user choices.
-        Supports creating a player, starting a game, showing highscores,
-        viewing rules, and quitting the application.
-        """
+        """Run the main game loop, displaying menus and handling user choices. Supports creating a player, starting a game, showing highscores,viewing rules, and quitting the application."""
         while True:
             self.menu()
             print("Enter choice:")
@@ -112,12 +97,10 @@ class Game:
 
     # ---------- GAME START ----------
     def start_game(self):
-        """
-        Handle the human player's turn.
+        """Handle the human player's turn.
 
         Displays the current scores, provides choices to Roll, Hold, Change name,
-        or Exit match. Updates scores and checks for winning conditions.
-        """
+        or Exit match. Updates scores and checks for winning conditions."""
         if not self.player:
             print("You need to create a player first!")
             return
@@ -149,13 +132,11 @@ class Game:
 
     # ---------- PLAYER TURN ----------
     def play_turn(self):
-        """
-        Handle the computer's turn using AI logic.
+        """Handle the computer's turn using AI logic.
 
         Rolls the dice and decides whether to hold or continue rolling based on
         the projected score and intelligence rules. Updates scores and checks
-        for winning conditions.
-        """
+        for winning conditions."""
 
         print(f"\n{self.player.name}'s turn!")
 

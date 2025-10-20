@@ -9,8 +9,5 @@ test:
 coverage:
 	PYTHONPATH=. python -m coverage run -m pytest
 
-
-
-# RUN WITH:
-# make test
-# make coverage
+flake8:
+	flake8 src/
