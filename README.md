@@ -44,6 +44,7 @@ If playing against the computer:
 - Create a player
 - Play against a computer-player  
 - Adjustable difficulty levels (Easy or Hard)  
+- Play game with or without cheat
 - High score tracking  
 - Display of game rules in a formatted UI  
 - Intelligent computer strategy based on difficulty  
@@ -84,4 +85,14 @@ python -m src.main
 Start the Unittests:
 ```bash
 make coverage 
+```
+
+Start Flake8:
+```bash
+make flake8 
+```
+
+Generate docstrings:
+```bash
+make docstring 
 ```

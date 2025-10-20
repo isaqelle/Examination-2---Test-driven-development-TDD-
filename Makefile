@@ -11,3 +11,6 @@ coverage:
 
 flake8:
 	flake8 src/
+
+docstring:
+	pdoc --html src
