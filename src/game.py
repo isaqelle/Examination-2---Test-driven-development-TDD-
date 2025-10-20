@@ -127,10 +127,24 @@ class Game:
         while True:
             print("Select difficulty (Easy [E] / Hard [H]): ")
             difficulty = input(">> ").strip().lower()
-            if difficulty not in ("e", "h"):
-                print("Please select [E] or [H]")
-                continue
-            break
+            if difficulty in ("e", "h"):
+                break
+            print("Please select [E] or [H]")
+
+
+        # implement cheat, cheating mode is winning score 10 instead of 100
+        while True:
+            print("Play with cheat [C] or without [W]:")
+            cheat = input(">> ").strip().lower()
+            if cheat in ("c", "w"):
+                break
+            print("Please select [C] or [W]")
+
+        if cheat == "c":
+            self.WINNING_SCORE = 10
+        if cheat == "w":
+            self.WINNING_SCORE = 100
+        
 
         print(f"{'Hard' if difficulty == 'h' else 'Easy'} mode selected.\nLet's begin!")
 
