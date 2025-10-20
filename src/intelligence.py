@@ -1,3 +1,5 @@
+"""Module defining the computer player Agnetha for the Pig Dice Game."""
+
 import random
 
 class Intelligence:
@@ -10,7 +12,7 @@ class Intelligence:
             raise ValueError('Difficulty must be "easy" or "hard".')
         self.name = 'Computer Agnetha'
         self.score = 0
-        self.difficulty = difficulty.lower()
+        self.difficulty = difficulty
 
     def add_points(self, points):
         """Add points to the computer's score."""
@@ -24,12 +26,13 @@ class Intelligence:
         """Decide whether to hold based on difficulty and scores."""
         if self.difficulty == 'easy':
             return turn_total >= 10 or random.random() < 0.1
-        elif self.difficulty == 'hard':
+
+        # Hard difficulty logic
+        if self.difficulty == 'hard':
             if self.score + turn_total >= 100:
                 return True
-            elif self.score < opponent_score and turn_total >= 15:
+            if self.score < opponent_score and turn_total >= 15:
                 return True
-            elif turn_total >= 20:
+            if turn_total >= 20:
                 return True
-            else: 
-                return False
+            return False

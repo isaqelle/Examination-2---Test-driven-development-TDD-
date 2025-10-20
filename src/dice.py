@@ -1,3 +1,5 @@
+"""Module defining the Dice class used in the Pig Dice Game."""
+
 import random
 
 class Dice:

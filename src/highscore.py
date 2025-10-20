@@ -1,12 +1,17 @@
-# highscore.py
+"""Module to manage highscores for the Pig Dice Game."""
+
 import json
 import os
 
-width = 53
+WIDTH = 53
+
 class HighScore:
+    """Class to manage highscores: save, load, and display."""
+
     FILE_PATH = "highscores.json"
 
     def __init__(self):
+        """Initialize HighScore and load scores from file."""
         self.scores = []  # list of dicts: {"name": ..., "score": ...}
         self.load()
 
@@ -22,40 +27,40 @@ class HighScore:
         return max(self.scores, key=lambda x: x["score"])
 
     def display_all(self):
-        highest = max(self.scores, key=lambda x: x["score"]) if self.scores else None
-        width = self.game.width if hasattr(self, "game") else 53  # fallback
+        """Print all highscores in a formatted ASCII frame."""
+        highest = self.get_highest()
+        display_width = WIDTH
 
-        print("\n╔" + "═" * (width - 2) + "╗")
-        print("║" + " " * (width - 2) + "║")
-        print("║" + "🏆 All-time Scores 🏆".center(width - 4) + "║")
-        print("║" + " " * (width - 2) + "║")
+        print("\n╔" + "═" * (display_width - 2) + "╗")
+        print("║" + " " * (display_width - 2) + "║")
+        print("║" + "🏆 All-time Scores 🏆".center(display_width - 4) + "║")
+        print("║" + " " * (display_width - 2) + "║")
 
-        # print each score line nicely centered
         if self.scores:
             for entry in sorted(self.scores, key=lambda x: x["score"], reverse=True):
                 line = f"{entry['name']}: {entry['score']}"
                 if highest and entry == highest:
                     line += "  <- Highest!"
-                print("║" + line.center(width - 2) + "║")
+                print("║" + line.center(display_width - 2) + "║")
         else:
-            print("║" + "No scores yet!".center(width - 2) + "║")
+            print("║" + "No scores yet!".center(display_width - 2) + "║")
 
-        print("║" + " " * (width - 2) + "║")
-        print("╚" + "═" * (width - 2) + "╝")
-    
+        print("║" + " " * (display_width - 2) + "║")
+        print("╚" + "═" * (display_width - 2) + "╝")
+
     def save(self):
-        """Save scores to a file."""
+        """Save scores to a JSON file."""
         try:
-            with open(self.FILE_PATH, "w") as f:
+            with open(self.FILE_PATH, "w", encoding="utf-8") as f:
                 json.dump(self.scores, f)
         except OSError:
             print("Error: Could not save highscores.")
 
     def load(self):
-        """Load scores from a file."""
+        """Load scores from a JSON file."""
         if os.path.exists(self.FILE_PATH):
             try:
-                with open(self.FILE_PATH, "r") as f:
+                with open(self.FILE_PATH, "r", encoding="utf-8") as f:
                     self.scores = json.load(f)
             except (OSError, json.JSONDecodeError):
                 self.scores = []

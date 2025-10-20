@@ -1,10 +1,12 @@
+"""Module to define the Game class for the Pig Dice Game."""
+
 from .dice import Dice
 from .intelligence import Intelligence
 from .player import Player
 from .highscore import HighScore
 
-title = "🐖  P I G   G A M E  🐖"
-width = 53
+TITLE = "🐖  P I G   G A M E  🐖"
+WIDTH = 53
 
 class Game:
     """A class to represent a Pig Dice Game session."""
@@ -12,7 +14,9 @@ class Game:
     WINNING_SCORE = 10  # set to 10 for testing purposes
 
     def __init__(self):
-        """Initialize a new game session, including player, computer,dice, AI, and highscore tracking. Also prints the game title banner."""
+        """Initialize a new game session, including player, computer, dice,
+        AI, and highscore tracking. Also prints the game title banner.
+        """
         self.player = None
         self.computer = Player("Computer")
         self.dice = Dice()
@@ -20,46 +24,53 @@ class Game:
         self.highest_score = 0
         self.game_over = False
         self.highscores = HighScore()
-        self.width = 53
+        self.width = WIDTH
 
-        print("\n╔" + "═" * width + "╗")
-        print("║" + " " * width + "║")
-        print("║" + title.center(width - 2) + "║")
-        print("║" + " " * width + "║")
-        print("╚" + "═" * width + "╝")
+        print("\n╔" + "═" * WIDTH + "╗")
+        print("║" + " " * WIDTH + "║")
+        print("║" + TITLE.center(WIDTH - 2) + "║")
+        print("║" + " " * WIDTH + "║")
+        print("╚" + "═" * WIDTH + "╝")
 
     # ---------- MENUS ----------
     def menu(self):
-        """Display the main game menu with options for creating a player,starting the game, viewing high scores, reading game rules, or quitting."""
-
-        print("\n╔" + "═" * width + "╗")
-        print("║" + " " * width + "║")
-        print("║" + "1) Create new Player".center(width) + "║")
-        print("║" + "2) Play Game".center(width) + "║")
-        print("║" + "3) Show Highscore".center(width) + "║")
-        print("║" + "4) Game Rules".center(width) + "║")
-        print("║" + "5) Quit".center(width) + "║")
-        print("║" + " " * width + "║")
-        print("╚" + "═" * width + "╝")
+        """Display the main game menu with options for creating a player,
+        starting the game, viewing high scores, reading game rules, or quitting.
+        """
+        print("\n╔" + "═" * WIDTH + "╗")
+        print("║" + " " * WIDTH + "║")
+        print("║" + "1) Create new Player".center(WIDTH) + "║")
+        print("║" + "2) Play Game".center(WIDTH) + "║")
+        print("║" + "3) Show Highscore".center(WIDTH) + "║")
+        print("║" + "4) Game Rules".center(WIDTH) + "║")
+        print("║" + "5) Quit".center(WIDTH) + "║")
+        print("║" + " " * WIDTH + "║")
+        print("╚" + "═" * WIDTH + "╝")
 
     def rules(self):
-        """Display the game rules in a formatted ASCII frame.Explains how turns work, scoring, and how to win."""
+        """Display the game rules in a formatted ASCII frame.
 
-        print("╔" + "═" * width + "╗")
-        print("║" + " " * width + "║")
-        print("║" + "🎲 GAME RULES".center(width-1) + "║")
-        print("║" + "Each turn, a player repeatedly rolls a die until".center(width) + "║")
-        print("║" + "a 1 is rolled or the player decides to 'hold':".center(width) + "║")
-        print("║" + "- Rolling a 1 = lose turn points".center(width) + "║")
-        print("║" + "- Rolling 2–6 = add to turn total".center(width) + "║")
-        print("║" + "- 'Hold' = add turn total to score".center(width) + "║")
-        print("║" + "First to reach 100 wins.".center(width) + "║")
-        print("║" + " " * width + "║")
-        print("╚" + "═" * width + "╝")
+        Explains how turns work, scoring, and how to win.
+        """
+        print("╔" + "═" * WIDTH + "╗")
+        print("║" + " " * WIDTH + "║")
+        print("║" + "🎲 GAME RULES".center(WIDTH - 1) + "║")
+        print("║" + "Each turn, a player repeatedly rolls a die until".center(WIDTH) + "║")
+        print("║" + "a 1 is rolled or the player decides to 'hold':".center(WIDTH) + "║")
+        print("║" + "- Rolling a 1 = lose turn points".center(WIDTH) + "║")
+        print("║" + "- Rolling 2–6 = add to turn total".center(WIDTH) + "║")
+        print("║" + "- 'Hold' = add turn total to score".center(WIDTH) + "║")
+        print("║" + "First to reach 100 wins.".center(WIDTH) + "║")
+        print("║" + " " * WIDTH + "║")
+        print("╚" + "═" * WIDTH + "╝")
 
     # ---------- GAME LOOP ----------
     def run(self):
-        """Run the main game loop, displaying menus and handling user choices. Supports creating a player, starting a game, showing highscores,viewing rules, and quitting the application."""
+        """Run the main game loop.
+
+        Displays menus and handles user choices: create player, start game,
+        show highscores, view rules, or quit the application.
+        """
         while True:
             self.menu()
             print("Enter choice:")
@@ -69,7 +80,7 @@ class Game:
                 while True:
                     print("Enter your name: ")
                     name = input(">> ").strip()
-                    if name == "":
+                    if not name:
                         print("Name cannot be null.")
                         continue
                     self.player = Player(name)
@@ -81,12 +92,15 @@ class Game:
                     print("Please create a player first!")
                     continue
                 self.start_game()
+                continue
 
             elif choice == "3":
                 self.highscores.display_all()
+                continue
 
             elif choice == "4":
                 self.rules()
+                continue
 
             elif choice == "5":
                 print(f"Goodbye {self.player.name if self.player else 'Player'}!")
@@ -100,10 +114,12 @@ class Game:
         """Handle the human player's turn.
 
         Displays the current scores, provides choices to Roll, Hold, Change name,
-        or Exit match. Updates scores and checks for winning conditions."""
+        or Exit match. Updates scores and checks for winning conditions.
+        """
         if not self.player:
             print("You need to create a player first!")
             return
+
         self.player.reset_score()
         self.computer.reset_score()
         self.game_over = False
@@ -111,7 +127,7 @@ class Game:
         while True:
             print("Select difficulty (Easy [E] / Hard [H]): ")
             difficulty = input(">> ").strip().lower()
-            if difficulty not in ("e","h"):
+            if difficulty not in ("e", "h"):
                 print("Please select [E] or [H]")
                 continue
             break
@@ -132,23 +148,29 @@ class Game:
 
     # ---------- PLAYER TURN ----------
     def play_turn(self):
-        """Handle the computer's turn using AI logic.
-
-        Rolls the dice and decides whether to hold or continue rolling based on
-        the projected score and intelligence rules. Updates scores and checks
-        for winning conditions."""
-
+        """Handle the human player's turn."""
         print(f"\n{self.player.name}'s turn!")
 
         while True:
-            print("\n╔" + "═" * (width+14) + "╗")
-            print("║" + f"{self.player.name}'s score: {self.player.score} | {self.computer.name}'s score: {self.computer.score}".center(width+14) + "║")
-            print("╚" + "═" * (width+14) + "╝")
-            print("\n╔" + "═" * (width+14) + "╗")
-            print("║" + " " * (width+14) + "║")
-            print("║" + "[R] Roll  |  [H] Hold  |  [C] Change name  |  [X] Exit match".center(width+14) + "║")
-            print("║" + " " * (width+14) + "║")
-            print("╚" + "═" * (width+14) + "╝")
+            print("\n╔" + "═" * (WIDTH + 14) + "╗")
+            print(
+                "║"
+                + f"{self.player.name}'s score: {self.player.score} | "
+                f"{self.computer.name}'s score: {self.computer.score}".center(WIDTH + 14)
+                + "║"
+            )
+            print("╚" + "═" * (WIDTH + 14) + "╝")
+            print("\n╔" + "═" * (WIDTH + 14) + "╗")
+            print("║" + " " * (WIDTH + 14) + "║")
+            print(
+                "║"
+                + "[R] Roll  |  [H] Hold  |  [C] Change name  |  [X] Exit match".center(
+                    WIDTH + 14
+                )
+                + "║"
+            )
+            print("║" + " " * (WIDTH + 14) + "║")
+            print("╚" + "═" * (WIDTH + 14) + "╝")
             print("")
             choice = input(">> ").strip().lower()
 
@@ -157,50 +179,45 @@ class Game:
                 print("Exiting current game...")
                 return
 
-            elif choice == "c":
+            if choice == "c":
                 print("Enter new name: ")
                 new_name = input(">> ").strip().lower()
                 self.player.name = new_name
                 print(f"Name changed to {new_name}")
                 continue
 
-            elif choice == "r":
+            if choice == "r":
                 roll = self.dice.roll()
-                
                 print(f"{self.player.name} rolled: {roll}")
 
                 if roll == 1:
                     print("Rolled a 1! You lose your turn points.")
-                    return  # lose turn, pass to computer
+                    return
+
                 self.player.score += roll
 
                 if self.player.score >= self.WINNING_SCORE:
                     print(f"🎉 {self.player.name} wins with {self.player.score} points! 🎉")
                     self.highscores.add_score(self.player.name, self.player.score)
                     self.game_over = True
-                    return  # end turn and end game immediately
+                    return
 
-                else:
-                    print(f"Total score: {self.player.score}\n")
+                print(f"Total score: {self.player.score}\n")
+                continue
 
-            elif choice == "h":
+            if choice == "h":
                 print(f"Held! Total score: {self.player.score}")
                 if self.player.score >= self.WINNING_SCORE:
                     print(f"🎉 {self.player.name} wins with {self.player.score} points!")
                     self.highscores.add_score(self.player.name, self.player.score)
                     self.game_over = True
-                return  # end of turn
-            else:
-                print("Invalid choice.")
+                return
+
+            print("Invalid choice.")
 
     # ---------- COMPUTER TURN ----------
     def computer_turn(self):
-        """
-    Execute the computer player's turn.
-
-    Rolls dice until the computer decides to hold or rolls a 1.
-    Updates scores and checks for a winning condition.
-    """
+        """Execute the computer player's turn using AI logic."""
         if self.game_over:
             return
 
@@ -213,7 +230,7 @@ class Game:
 
             if roll == 1:
                 print("Computer rolled a 1 — loses turn points.")
-                return  # end turn
+                return
 
             turn_total += roll
             projected_score = self.computer.score + turn_total
