@@ -1,0 +1,145 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+' DICE CLASS
+
+class Dice {
+  - num_sides: int = 6
+  - value: int = 1
+  + __init__(num_sides=6)
+  + roll(): int
+  + __str__(): str
+}
+
+note right of Dice
+  Represents a single die.
+  Can roll between 1 and num_sides.
+  Stores current value.
+end note
+
+' HIGHSCORE CLASS
+
+class HighScore {
+  - FILE_PATH: str = "highscores.json"
+  - scores: list
+  + __init__()
+  + add_score(name, score)
+  + get_highest()
+  + display_all()
+  + save()
+  + load()
+}
+
+note left of HighScore
+  From highscore.py
+  Stores and displays scores
+end note
+
+' DICEHAND CLASS
+
+class DiceHand {
+  - dice: list[Dice]
+  - last_roll: list[int]
+  + __init__(num_dice=1, num_sides=6)
+  + roll_all(): list[int]
+  + get_total(): int
+  + __str__(): str
+}
+
+DiceHand "1" *-- "many" Dice : contains >
+
+note right of DiceHand
+  Represents a hand of dice.
+  Rolls all dice together.
+  Tracks last roll and total.
+end note
+
+class Dice
+class Player
+class Intelligence
+class HighScore
+
+' GAME CLASS
+
+class Game {
+  + WINNING_SCORE: int = 10
+  - player: Player
+  - computer: Player
+  - dice: Dice
+  - intelligence: Intelligence
+  - highscores: HighScore
+  - highest_score: int
+  - game_over: bool
+  - width: int = 53
+
+  + __init__()
+  + menu()
+  + rules()
+  + run()
+  + start_game()
+  + play_turn()
+  + computer_turn()
+}
+
+
+Game --> Dice : uses >
+Game --> Intelligence : uses >
+Game --> Player : has >
+Game --> HighScore : manages >
+
+note right of Game
+  Represents a Pig Dice Game session.
+  Handles menu, rules, and full game loop.
+  Manages player, computer, dice, AI, and highscores.
+end note
+
+' INTELLIGENCE CLASS
+
+class Intelligence {
+  - name: str
+  - score: int
+  - difficulty: str
+  + __init__(difficulty='easy')
+  + add_points(points)
+  + reset_score()
+  + should_hold(turn_total, opponent_score): bool
+}
+
+note right of Intelligence
+  Computer AI for Pig Dice Game.
+  Decides whether to hold based on:
+  - difficulty level ('easy' or 'hard')
+  - current score, turn total, and opponent score.
+end note
+
+' PLAYER CLASS
+
+class Player {
+  - name: str
+  - score: int
+  + __init__(name)
+  + add_points(points)
+  + reset_score()
+  + __str__(): str
+}
+
+note right of Player
+  Represents a human player in the Pig Dice Game.
+  Tracks name and current score.
+  Provides methods to add points and reset score.
+end note
+
+' MAIN
+
+class Main {
+  + main()
+}
+
+Main ..> Game : creates >
+
+note right of Main
+  Entry point of the Pig Dice Game.
+  Instantiates a Game object and calls run().
+end note
+
+@enduml
