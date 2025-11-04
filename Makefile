@@ -14,5 +14,8 @@ flake8:
 coverage:
 	python -m pytest --cov=src --cov-report=term-missing -v
 
+lint:
+	python -m pylint src/
+
 docstring:
 	python -m pdoc --html src
