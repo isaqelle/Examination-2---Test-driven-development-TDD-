@@ -1,13 +1,13 @@
 .PHONY: test coverage install
 
 install:
-	pip install -r requirements.txt
+	python -m pip install -r requirements.txt
 
 test:
-	pytest -v
+	python -m pytest -v
 
 flake8:
-	flake8 src/
+	python -m flake8 src/
 
 docstring:
-	pdoc --html src
+	python -m pdoc --html src

@@ -29,7 +29,8 @@ class HighScore:
     def display_all(self):
         """Print all highscores in a formatted ASCII frame."""
         highest = self.get_highest()
-        display_width = WIDTH
+        display_width = getattr(getattr(self, "game", None), "width", WIDTH)
+
 
         print("\n╔" + "═" * (display_width - 2) + "╗")
         print("║" + " " * (display_width - 2) + "║")
