@@ -104,15 +104,19 @@ def test_computer_turn_holds(game, capsys):
 
 @patch("builtins.input", side_effect=["e", "c"])
 def test_start_game_cheat_mode(mock_input, game):
-    """Test start_game changes winning_score for cheat mode."""
     game.player = type("Player", (), {"name": "Tester", "score": 0, "reset_score": lambda s: None})()
     game.computer.reset_score = lambda: None
-    game.play_turn = MagicMock()
+
+    # Stop infinite loop by making play_turn() set game_over=True
+    def fake_play_turn():
+        game.game_over = True
+
+    game.play_turn = fake_play_turn
     game.computer_turn = MagicMock()
     game.highscores.add_score = MagicMock()
-    game.start_game()
-    assert game.winning_score == 10  # cheat mode sets to 10
 
+    game.start_game()
+    assert game.winning_score == 10
 
 # ---------- WINNING CONDITION ----------
 
