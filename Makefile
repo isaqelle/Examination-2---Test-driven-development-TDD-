@@ -19,3 +19,4 @@ lint:
 
 docstring:
 	python -m pdoc --html src
+
